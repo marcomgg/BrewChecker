@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
+            <connections>
+                <outlet property="delegate" destination="Lak-ij-via" id="dap-hP-ifM"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+        <customObject id="Lak-ij-via" customClass="AppDelegate" customModule="BrewChecker" customModuleProvider="target"/>
+        <viewController id="edn-S0-ESX" customClass="CheckViewController" customModule="BrewChecker" customModuleProvider="target"/>
+        <customObject id="bwV-98-jbr" customClass="PopoverController" customModule="BrewChecker" customModuleProvider="target">
+            <connections>
+                <outlet property="popover" destination="UU5-Bo-fzv" id="abh-Uv-FTl"/>
+            </connections>
+        </customObject>
+        <popover id="UU5-Bo-fzv">
+            <connections>
+                <outlet property="contentViewController" destination="edn-S0-ESX" id="BLg-2i-xa8"/>
+            </connections>
+        </popover>
+    </objects>
+</document>
