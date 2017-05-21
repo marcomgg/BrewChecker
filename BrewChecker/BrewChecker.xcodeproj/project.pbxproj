@@ -13,6 +13,7 @@
 		A9D022461ED04DAB00F4C557 /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D022441ED04DAB00F4C557 /* CheckViewController.swift */; };
 		A9D022471ED04DAB00F4C557 /* CheckViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9D022451ED04DAB00F4C557 /* CheckViewController.xib */; };
 		A9D022491ED04E0E00F4C557 /* PopoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D022481ED04E0E00F4C557 /* PopoverController.swift */; };
+		A9E31CD31ED1A41800A3DAC5 /* OutdatedCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E31CD21ED1A41800A3DAC5 /* OutdatedCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		A9D022441ED04DAB00F4C557 /* CheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
 		A9D022451ED04DAB00F4C557 /* CheckViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckViewController.xib; sourceTree = "<group>"; };
 		A9D022481ED04E0E00F4C557 /* PopoverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverController.swift; sourceTree = "<group>"; };
+		A9E31CD21ED1A41800A3DAC5 /* OutdatedCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutdatedCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				A9D022441ED04DAB00F4C557 /* CheckViewController.swift */,
 				A9D022451ED04DAB00F4C557 /* CheckViewController.xib */,
 				A9D022481ED04E0E00F4C557 /* PopoverController.swift */,
+				A9E31CD21ED1A41800A3DAC5 /* OutdatedCellView.swift */,
 			);
 			path = BrewChecker;
 			sourceTree = "<group>";
@@ -142,6 +145,7 @@
 			files = (
 				A9D022341ED04B3600F4C557 /* AppDelegate.swift in Sources */,
 				A9D022491ED04E0E00F4C557 /* PopoverController.swift in Sources */,
+				A9E31CD31ED1A41800A3DAC5 /* OutdatedCellView.swift in Sources */,
 				A9D022461ED04DAB00F4C557 /* CheckViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,6 +292,7 @@
 				A9D022411ED04B3600F4C557 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

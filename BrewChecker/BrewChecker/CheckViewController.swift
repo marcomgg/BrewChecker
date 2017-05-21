@@ -8,11 +8,26 @@
 
 import Cocoa
 
-class CheckViewController: NSViewController {
+class CheckViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
 
+	@IBOutlet weak var formulaeView: NSTableView!
+	
     override func viewDidLoad() {
         super.viewDidLoad()
+		self.formulaeView.delegate = self
+		self.formulaeView.dataSource = self
         // Do view setup here.
     }
-    
+	
+	func numberOfRows(in tableView: NSTableView) -> Int {
+		return 1
+	}
+	
+	func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+		if let cell = formulaeView.make(withIdentifier: "formulaeCell", owner: nil) as? OutdatedCellView{
+			  cell.formulaeName.stringValue = "prova"
+			  return cell
+			}
+		return nil
+	}
 }
