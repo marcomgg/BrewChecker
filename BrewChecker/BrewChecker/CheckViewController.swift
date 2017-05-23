@@ -11,15 +11,20 @@ import Cocoa
 class CheckViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
 
 	@IBOutlet weak var formulaeView: NSTableView!
-	
+	let parser = CommandParser()
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 		self.formulaeView.delegate = self
 		self.formulaeView.dataSource = self
-        // Do view setup here.
         
-        if let dict = CommandParser.checkOutdated(){
-            print(dict)
+        DispatchQueue.global(qos: .userInitiated).async {
+            if let dict = self.parser.checkOutdated(){
+                print(dict)
+            }
+            else{
+                print("An error occured")
+            }
         }
     }
 	

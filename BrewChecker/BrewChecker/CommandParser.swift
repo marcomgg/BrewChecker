@@ -10,22 +10,52 @@ import Foundation
 
 class CommandParser{
     
-    static func checkOutdated() -> [Any]?{
+    let brewPath = "/usr/local/bin/brew"
+    
+    func checkOutdated() -> [Any]?{
         //let command = "[{\"name\":\"git\",\"current_version\":\"2.7.0\",\"installed_versions\":[\"2.6.3\",\"2.6.4\"]},{\"name\":\"mercurial\",\"current_version\":\"3.6.3\",\"installed_versions\":[\"3.5.2\",\"3.6.1\",\"3.6.2\"]},{\"name\":\"qemu\",\"current_version\":\"2.5.0\",\"installed_versions\":[\"2.4.0.1\"]}]"
-        let command = "[]"
-
-        let json = try? JSONSerialization.jsonObject(with: command.data(using: String.Encoding.utf8)!, options: [])
+        update()
+        let arguments = ["update"]
+        let output = executeCommand(command: brewPath, arguments: arguments)
+        print(output)
+        
+        let json = try? JSONSerialization.jsonObject(with: output.data(using: String.Encoding.utf8)!, options: [])
         return json as? [Any]
     }
 
-    static func update(){
-
+    func update(){
+        let arguments = ["update"]
+        _ = executeCommand(command: brewPath, arguments: arguments)
     }
 
-    static func upgrade(formulae: [String]){
-
+    func upgrade(formulae: [String]? = nil){
+        if formulae == nil{
+            let arguments = ["upgrade"]
+            _ = executeCommand(command: brewPath, arguments: arguments)
+        }else{
+            for formula in formulae!{
+                let arguments = ["upgrade", formula]
+                _ = executeCommand(command: brewPath, arguments: arguments)
+            }
+        }
     }
 
-    static func executeCommand(){
+    func executeCommand(command: String, arguments: [String]) -> String{
+        let process = Process()
+        process.launchPath = command
+        process.arguments = arguments
+        
+        let pipe = Pipe()
+        process.standardOutput = pipe
+        process.launch()
+        
+        let output = String(data: pipe.fileHandleForReading.readDataToEndOfFile(), encoding: String.Encoding.utf8)!
+        
+        
+        if output.characters.count > 0 {
+            let lastIndex = output.index(before: output.endIndex)
+            return output[output.startIndex ..< lastIndex]
+        }
+        return output
     }
 }
