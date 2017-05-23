@@ -17,6 +17,10 @@ class CheckViewController: NSViewController, NSTableViewDelegate, NSTableViewDat
 		self.formulaeView.delegate = self
 		self.formulaeView.dataSource = self
         // Do view setup here.
+        
+        if let dict = CommandParser.checkOutdated(){
+            print(dict)
+        }
     }
 	
 	func numberOfRows(in tableView: NSTableView) -> Int {
