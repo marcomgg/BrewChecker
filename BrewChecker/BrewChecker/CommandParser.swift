@@ -10,7 +10,11 @@ import Foundation
 
 class CommandParser{
     
-    let brewPath = "/usr/local/bin/brew"
+    let brewPath: String
+    
+    init(brewPath: String){
+        self.brewPath = brewPath
+    }
     
     func checkOutdated() -> [Any]?{
         let prova = "[{\"name\":\"git\",\"current_version\":\"2.7.0\",\"installed_versions\":[\"2.6.3\",\"2.6.4\"]},{\"name\":\"mercurial\",\"current_version\":\"3.6.3\",\"installed_versions\":[\"3.5.2\",\"3.6.1\",\"3.6.2\"]},{\"name\":\"qemu\",\"current_version\":\"2.5.0\",\"installed_versions\":[\"2.4.0.1\"]}]"
@@ -40,7 +44,7 @@ class CommandParser{
         }
     }
 
-    func executeCommand(command: String, arguments: [String]) -> String{
+    func executeCommand(command: String, arguments: [String]) -> String {
         let process = Process()
         process.launchPath = command
         process.arguments = arguments
@@ -50,7 +54,6 @@ class CommandParser{
         process.launch()
         
         let output = String(data: pipe.fileHandleForReading.readDataToEndOfFile(), encoding: String.Encoding.utf8)!
-        
         
         if output.characters.count > 0 {
             let lastIndex = output.index(before: output.endIndex)

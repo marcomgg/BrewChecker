@@ -11,9 +11,9 @@ import Cocoa
 class CheckViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
 
 	@IBOutlet weak var formulaeView: NSTableView!
-	let parser = CommandParser()
+    var parser: CommandParser?
     var outdatedFormulae: [Any]?
-    
+    let defaultBrewPath = "/usr/local/bin/brew"
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -23,13 +23,19 @@ class CheckViewController: NSViewController, NSTableViewDelegate, NSTableViewDat
     }
 	
     override func awakeFromNib() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            if let dict = self.parser.checkOutdated(){
-                self.outdatedFormulae = dict
+        if exists(path: defaultBrewPath){
+            parser = CommandParser(brewPath: defaultBrewPath)
+            DispatchQueue.global(qos: .userInitiated).async {
+                if let dict = self.parser!.checkOutdated(){
+                    self.outdatedFormulae = dict
+                }
+                else{
+                    print("An error occured")
+                }
             }
-            else{
-                print("An error occured")
-            }
+        }
+        else{
+            print("Brew is not in /usr/local/bin/")
         }
     }
     
@@ -52,4 +58,18 @@ class CheckViewController: NSViewController, NSTableViewDelegate, NSTableViewDat
         }
 		return nil
 	}
+    
+    func exists(path: String) -> Bool{
+        let fileManager = FileManager.default
+        var isDir : ObjCBool = false
+        if fileManager.fileExists(atPath: path, isDirectory:&isDir) {
+            if isDir.boolValue {
+                return false
+            } else {
+                return true
+            }
+        } else {
+            return false
+        }
+    }
 }
