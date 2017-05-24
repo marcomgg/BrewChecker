@@ -13,13 +13,13 @@ class CommandParser{
     let brewPath = "/usr/local/bin/brew"
     
     func checkOutdated() -> [Any]?{
-        //let command = "[{\"name\":\"git\",\"current_version\":\"2.7.0\",\"installed_versions\":[\"2.6.3\",\"2.6.4\"]},{\"name\":\"mercurial\",\"current_version\":\"3.6.3\",\"installed_versions\":[\"3.5.2\",\"3.6.1\",\"3.6.2\"]},{\"name\":\"qemu\",\"current_version\":\"2.5.0\",\"installed_versions\":[\"2.4.0.1\"]}]"
+        let prova = "[{\"name\":\"git\",\"current_version\":\"2.7.0\",\"installed_versions\":[\"2.6.3\",\"2.6.4\"]},{\"name\":\"mercurial\",\"current_version\":\"3.6.3\",\"installed_versions\":[\"3.5.2\",\"3.6.1\",\"3.6.2\"]},{\"name\":\"qemu\",\"current_version\":\"2.5.0\",\"installed_versions\":[\"2.4.0.1\"]}]"
         update()
         let arguments = ["update"]
         let output = executeCommand(command: brewPath, arguments: arguments)
         print(output)
         
-        let json = try? JSONSerialization.jsonObject(with: output.data(using: String.Encoding.utf8)!, options: [])
+        let json = try? JSONSerialization.jsonObject(with: prova.data(using: String.Encoding.utf8)!, options: [])
         return json as? [Any]
     }
 

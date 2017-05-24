@@ -12,31 +12,44 @@ class CheckViewController: NSViewController, NSTableViewDelegate, NSTableViewDat
 
 	@IBOutlet weak var formulaeView: NSTableView!
 	let parser = CommandParser()
+    var outdatedFormulae: [Any]?
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
 		self.formulaeView.delegate = self
 		self.formulaeView.dataSource = self
         
+    }
+	
+    override func awakeFromNib() {
         DispatchQueue.global(qos: .userInitiated).async {
             if let dict = self.parser.checkOutdated(){
-                print(dict)
+                self.outdatedFormulae = dict
             }
             else{
                 print("An error occured")
             }
         }
     }
-	
+    
 	func numberOfRows(in tableView: NSTableView) -> Int {
-		return 1
+        if outdatedFormulae != nil{
+            return outdatedFormulae!.count
+        }else{
+            return 0
+        }
 	}
 	
 	func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
 		if let cell = formulaeView.make(withIdentifier: "formulaeCell", owner: nil) as? OutdatedCellView{
-			  cell.formulaeName.stringValue = "prova"
-			  return cell
-			}
+            if let formula = outdatedFormulae![row] as? [String: Any]{
+                let name = formula["name"] as! String
+                let version = formula["current_version"] as! String
+                cell.formulaeName.stringValue = name + " " + version
+                return cell
+            }
+        }
 		return nil
 	}
 }
