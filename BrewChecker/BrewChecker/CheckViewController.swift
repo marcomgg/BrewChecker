@@ -11,9 +11,11 @@ import Cocoa
 class CheckViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
 
 	@IBOutlet weak var formulaeView: NSTableView!
-    var parser: CommandParser?
     var outdatedFormulae: [Any]?
-    let defaultBrewPath = "/usr/local/bin/brew"
+    var defaultBrewPath = "/usr/local/bin/brew"
+	var parser: CommandParser!
+	var updated = false
+	
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -23,20 +25,25 @@ class CheckViewController: NSViewController, NSTableViewDelegate, NSTableViewDat
     }
 	
     override func awakeFromNib() {
-        if exists(path: defaultBrewPath){
-            parser = CommandParser(brewPath: defaultBrewPath)
-            DispatchQueue.global(qos: .userInitiated).async {
-                if let dict = self.parser!.checkOutdated(){
-                    self.outdatedFormulae = dict
-                }
-                else{
-                    print("An error occured")
-                }
-            }
-        }
-        else{
-            print("Brew is not in /usr/local/bin/")
-        }
+		//UserDefaults.standard.set(11, forKey: "Prova")
+		//print(UserDefaults.standard.object(forKey: "Prova"))
+		parser = CommandParser(brewPath: defaultBrewPath)
+		if(!updated){
+			updated = true
+			DispatchQueue.global(qos: .userInitiated).async {
+				if let dict = self.parser.checkOutdated(){
+					self.outdatedFormulae = dict
+					DispatchQueue.main.async {
+						if (self.formulaeView != nil){
+							self.formulaeView.reloadData()
+						}
+					}
+				}
+				else{
+					print("An error occured")
+				}
+			}
+		}
     }
     
 	func numberOfRows(in tableView: NSTableView) -> Int {
@@ -58,18 +65,4 @@ class CheckViewController: NSViewController, NSTableViewDelegate, NSTableViewDat
         }
 		return nil
 	}
-    
-    func exists(path: String) -> Bool{
-        let fileManager = FileManager.default
-        var isDir : ObjCBool = false
-        if fileManager.fileExists(atPath: path, isDirectory:&isDir) {
-            if isDir.boolValue {
-                return false
-            } else {
-                return true
-            }
-        } else {
-            return false
-        }
-    }
 }
