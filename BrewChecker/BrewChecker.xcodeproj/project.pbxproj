@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A995D7451ED453F500E24736 /* CommandParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A995D7441ED453F500E24736 /* CommandParser.swift */; };
+		A995D7451ED453F500E24736 /* BrewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A995D7441ED453F500E24736 /* BrewManager.swift */; };
+		A998159B1F3DD3A900029411 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A998159A1F3DD3A900029411 /* Settings.swift */; };
 		A9D022341ED04B3600F4C557 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D022331ED04B3600F4C557 /* AppDelegate.swift */; };
 		A9D022381ED04B3600F4C557 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9D022371ED04B3600F4C557 /* Assets.xcassets */; };
 		A9D022431ED04C1F00F4C557 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9D022421ED04C1F00F4C557 /* MainMenu.xib */; };
@@ -18,7 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A995D7441ED453F500E24736 /* CommandParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandParser.swift; sourceTree = "<group>"; };
+		A995D7441ED453F500E24736 /* BrewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrewManager.swift; sourceTree = "<group>"; };
+		A998159A1F3DD3A900029411 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		A9D022301ED04B3600F4C557 /* BrewChecker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrewChecker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9D022331ED04B3600F4C557 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9D022371ED04B3600F4C557 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				A9D022331ED04B3600F4C557 /* AppDelegate.swift */,
+				A998159A1F3DD3A900029411 /* Settings.swift */,
 				A9D022371ED04B3600F4C557 /* Assets.xcassets */,
 				A9D0223C1ED04B3600F4C557 /* Info.plist */,
 				A9D022421ED04C1F00F4C557 /* MainMenu.xib */,
@@ -68,7 +71,7 @@
 				A9D022451ED04DAB00F4C557 /* CheckViewController.xib */,
 				A9D022481ED04E0E00F4C557 /* PopoverController.swift */,
 				A9E31CD21ED1A41800A3DAC5 /* OutdatedCellView.swift */,
-				A995D7441ED453F500E24736 /* CommandParser.swift */,
+				A995D7441ED453F500E24736 /* BrewManager.swift */,
 			);
 			path = BrewChecker;
 			sourceTree = "<group>";
@@ -147,7 +150,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9D022341ED04B3600F4C557 /* AppDelegate.swift in Sources */,
-				A995D7451ED453F500E24736 /* CommandParser.swift in Sources */,
+				A995D7451ED453F500E24736 /* BrewManager.swift in Sources */,
+				A998159B1F3DD3A900029411 /* Settings.swift in Sources */,
 				A9D022491ED04E0E00F4C557 /* PopoverController.swift in Sources */,
 				A9E31CD31ED1A41800A3DAC5 /* OutdatedCellView.swift in Sources */,
 				A9D022461ED04DAB00F4C557 /* CheckViewController.swift in Sources */,

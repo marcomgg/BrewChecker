@@ -13,7 +13,6 @@ class PopoverController: NSObject {
 	@IBOutlet weak var popover: NSPopover!
 	
 	let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
-
 	
 	override func awakeFromNib() {
 		if let button = statusItem.button {
