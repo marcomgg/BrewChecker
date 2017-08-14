@@ -9,23 +9,14 @@
 import Foundation
 
 class BrewManager{
-    
-    var brewPath: String
+
     let commands = [ "update" : ["update"],
 					 "outdated" : ["outdated", "--json=v1"],
 					 "upgrade" : ["upgrade"] ]
 	
-    init(brewPath: String){
-        self.brewPath = brewPath
-    }
-	
-	func setBrewPath(path: String) {
-		brewPath = path
-	}
-	
     func checkOutdated() -> [Any]?{
         update()
-        if let output = executeCommand(command: brewPath, arguments: commands["outdated"]!){
+        if let output = executeCommand(command: Settings.brewCommand, arguments: commands["outdated"]!){
 			let json = try? JSONSerialization.jsonObject(with: output.data(using: String.Encoding.utf8)!, options: [])
 			return json as? [Any]
 		}
@@ -33,7 +24,7 @@ class BrewManager{
     }
 
     func update(){
-        _ = executeCommand(command: brewPath, arguments: commands["update"]!)
+        _ = executeCommand(command: Settings.brewCommand, arguments: commands["update"]!)
     }
 
     func upgrade(formulae: [String]? = nil) -> String?{
@@ -42,7 +33,7 @@ class BrewManager{
 		if formulae != nil {
 			arguments.append(contentsOf: formulae!)
         }
-		return executeCommand(command: brewPath, arguments: arguments)
+		return executeCommand(command: Settings.brewCommand, arguments: arguments)
     }
 
     func executeCommand(command: String, arguments: [String]) -> String? {
