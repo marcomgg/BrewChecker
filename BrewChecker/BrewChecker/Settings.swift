@@ -18,7 +18,7 @@ class Settings {
 	}
 	
 	static func initSettings() {
-		if let path = UserDefaults.standard.object(forKey: "BrewPath") as? String { brewPath = path }
+		//if let path = UserDefaults.standard.object(forKey: "BrewPath") as? String { brewPath = path }
 	}
 	
 	static func brewExists() -> Bool{

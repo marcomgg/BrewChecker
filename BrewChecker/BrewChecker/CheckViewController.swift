@@ -64,8 +64,8 @@ class CheckViewController: NSViewController, NSTableViewDelegate, NSTableViewDat
 	
     override func awakeFromNib() {
 		settingsController = NSWindowController(window: settings)
+        manager = BrewManager()
 		if Settings.brewExists() {
-			manager = BrewManager()
 			if !updated {
 				updated = true
 				let dayInSeconds = 86400.0
