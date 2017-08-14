@@ -11,10 +11,14 @@ import Cocoa
 class OutdatedCellView: NSTableCellView {
 	
 	@IBOutlet weak var formulaeName: NSTextField!
-	@IBOutlet weak var selected: NSButton!
+	@IBOutlet weak var selected: SelectFormulaButton!
 	
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
     }
     
+}
+
+class SelectFormulaButton: NSButton {
+	var index:Int = -1
 }

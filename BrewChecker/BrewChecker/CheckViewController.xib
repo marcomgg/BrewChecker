@@ -65,7 +65,7 @@
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="cks-WE-0ub">
+                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="cks-WE-0ub" customClass="SelectFormulaButton" customModule="BrewChecker" customModuleProvider="target">
                                                         <rect key="frame" x="269" y="5" width="18" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="14" id="Npt-Va-cr4"/>
@@ -93,6 +93,9 @@
                                         </prototypeCellViews>
                                     </tableColumn>
                                 </tableColumns>
+                                <connections>
+                                    <outlet property="delegate" destination="-2" id="CCH-v8-wQf"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

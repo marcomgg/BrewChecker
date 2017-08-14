@@ -36,6 +36,10 @@ class CheckViewController: NSViewController, NSTableViewDelegate, NSTableViewDat
 		settingsController.showWindow(self)
 	}
 	
+	@IBAction func selectFormula(_ sender: SelectFormulaButton) {
+		print(sender.index)
+	}
+	
 	@IBAction func save(_ sender: NSButton) {
 		var path = pathTextField.stringValue
 		if path.characters.last != "/" {
@@ -139,6 +143,8 @@ class CheckViewController: NSViewController, NSTableViewDelegate, NSTableViewDat
                 let version = formula["current_version"] as! String
                 cell.formulaeName.stringValue = name + " " + version
 				cell.selected.state = 1
+				cell.selected.action = #selector(self.selectFormula(_:))
+				cell.selected.index = row
                 return cell
             }
         }
