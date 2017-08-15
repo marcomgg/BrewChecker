@@ -14,11 +14,13 @@ class CheckViewController: NSViewController, NSTableViewDelegate, NSTableViewDat
 	var manager: BrewManager!
 	var updated = false
 	var settingsController: NSWindowController!
+	var deselectedFormulae: [Int]! = []
 	
 	// Main view outlets
 	@IBOutlet weak var formulaeView: NSTableView!
 	@IBOutlet weak var progressWheel: NSProgressIndicator!
 	@IBOutlet weak var buttonCheck: NSButton!
+	@IBOutlet weak var upgradeBar: NSProgressIndicator!
 	
 	// Settings outlets
 	@IBOutlet var settings: NSWindow!
@@ -37,7 +39,12 @@ class CheckViewController: NSViewController, NSTableViewDelegate, NSTableViewDat
 	}
 	
 	@IBAction func selectFormula(_ sender: SelectFormulaButton) {
-		print(sender.index)
+		if sender.state == 0 {
+			deselectedFormulae.append(sender.index)
+		} else {
+			deselectedFormulae.remove(at: deselectedFormulae.index(of: sender.index)!)
+		}
+		print(deselectedFormulae)
 	}
 	
 	@IBAction func save(_ sender: NSButton) {
@@ -52,6 +59,10 @@ class CheckViewController: NSViewController, NSTableViewDelegate, NSTableViewDat
 	
 	@IBAction func check(_ sender: NSButton) {
 		checkUpdates()
+	}
+	
+	@IBAction func update(_ sender: NSButton) {
+		
 	}
 	
     override func viewDidLoad() {

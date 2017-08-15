@@ -17,6 +17,7 @@
                 <outlet property="progressWheel" destination="Xah-io-qca" id="sCe-Ga-W9X"/>
                 <outlet property="settings" destination="fXl-KG-oqc" id="rkU-4j-Of0"/>
                 <outlet property="statusIndicator" destination="cYT-vj-BjD" id="BzD-2F-F8y"/>
+                <outlet property="upgradeBar" destination="LOJ-zg-F3l" id="ZVz-NV-XCI"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -130,14 +131,17 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VTB-xF-7nR">
-                    <rect key="frame" x="10" y="-1" width="49" height="35"/>
+                    <rect key="frame" x="10" y="-1" width="57" height="35"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="35" id="Id8-WB-k1W"/>
                     </constraints>
-                    <buttonCell key="cell" type="bevel" title="Update" bezelStyle="rounded" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="tE7-Vf-GK2">
+                    <buttonCell key="cell" type="bevel" title="Upgrade" bezelStyle="rounded" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="tE7-Vf-GK2">
                         <behavior key="behavior" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="update:" target="-2" id="xlz-Co-WTL"/>
+                    </connections>
                 </button>
                 <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="JwR-GV-E0I">
                     <rect key="frame" x="67" y="-41" width="16" height="16"/>
@@ -159,6 +163,10 @@
                 </button>
                 <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Xah-io-qca">
                     <rect key="frame" x="13" y="325" width="16" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </progressIndicator>
+                <progressIndicator hidden="YES" wantsLayer="YES" fixedFrame="YES" maxValue="100" indeterminate="YES" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="LOJ-zg-F3l">
+                    <rect key="frame" x="100" y="7" width="100" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </progressIndicator>
             </subviews>
