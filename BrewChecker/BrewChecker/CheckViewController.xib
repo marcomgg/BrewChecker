@@ -140,7 +140,7 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="update:" target="-2" id="xlz-Co-WTL"/>
+                        <action selector="upgrade:" target="-2" id="nqi-C4-jxD"/>
                     </connections>
                 </button>
                 <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="JwR-GV-E0I">

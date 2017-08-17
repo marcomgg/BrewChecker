@@ -14,7 +14,8 @@ class CheckViewController: NSViewController, NSTableViewDelegate, NSTableViewDat
 	var manager: BrewManager!
 	var updated = false
 	var settingsController: NSWindowController!
-	var deselectedFormulae: [Int]! = []
+	var selectedFormulae: [String]! = []
+	var upgradeOutput: String?
 	
 	// Main view outlets
 	@IBOutlet weak var formulaeView: NSTableView!
@@ -39,12 +40,15 @@ class CheckViewController: NSViewController, NSTableViewDelegate, NSTableViewDat
 	}
 	
 	@IBAction func selectFormula(_ sender: SelectFormulaButton) {
-		if sender.state == 0 {
-			deselectedFormulae.append(sender.index)
-		} else {
-			deselectedFormulae.remove(at: deselectedFormulae.index(of: sender.index)!)
+		if let formula = outdatedFormulae![sender.index] as? [String: Any]{
+			let name = formula["name"] as! String
+			if sender.state != 0 {
+				selectedFormulae.append(name)
+			} else {
+				selectedFormulae.remove(at: sender.index)
+			}
+			print(selectedFormulae)
 		}
-		print(deselectedFormulae)
 	}
 	
 	@IBAction func save(_ sender: NSButton) {
@@ -61,8 +65,27 @@ class CheckViewController: NSViewController, NSTableViewDelegate, NSTableViewDat
 		checkUpdates()
 	}
 	
-	@IBAction func update(_ sender: NSButton) {
-		
+
+	@IBAction func upgrade(_ sender: Any) {
+		DispatchQueue.main.async {
+			self.upgradeBar.isHidden = false
+			self.upgradeBar.startAnimation(self)
+		}
+		DispatchQueue.global(qos: .userInitiated).async  {
+			var formulae: [String]? = nil
+			if self.selectedFormulae.count != 0 {
+				formulae = self.selectedFormulae
+			}
+			if let output = self.manager.upgrade(formulae: formulae) {
+				self.upgradeOutput = output
+				DispatchQueue.main.async {
+					self.upgradeBar.isHidden = true
+					self.upgradeBar.stopAnimation(self)
+					print(output)
+				}
+				self.checkUpdates()
+			}
+		}
 	}
 	
     override func viewDidLoad() {
@@ -152,6 +175,7 @@ class CheckViewController: NSViewController, NSTableViewDelegate, NSTableViewDat
 			if let formula = outdatedFormulae![row] as? [String: Any]{
                 let name = formula["name"] as! String
                 let version = formula["current_version"] as! String
+				self.selectedFormulae.append(name)
                 cell.formulaeName.stringValue = name + " " + version
 				cell.selected.state = 1
 				cell.selected.action = #selector(self.selectFormula(_:))
