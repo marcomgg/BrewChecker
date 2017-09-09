@@ -32,7 +32,8 @@ class CheckViewController: NSViewController, NSTableViewDelegate, NSTableViewDat
 	
 	// Summary
 	@IBOutlet var summary: NSWindow!
-	@IBOutlet weak var summaryText: NSTextField!
+	@IBOutlet var summaryText: NSTextView!
+	
 	
 	@IBAction func close(_ sender: Any) {
 		NSApplication.shared().terminate(nil)
@@ -85,7 +86,9 @@ class CheckViewController: NSViewController, NSTableViewDelegate, NSTableViewDat
 				DispatchQueue.main.async {
 					self.upgradeBar.isHidden = true
 					self.upgradeBar.stopAnimation(self)
-					self.summaryText.stringValue = output
+					let attributes = [NSForegroundColorAttributeName: NSColor.white]
+					let out = NSMutableAttributedString(string: output, attributes: attributes)
+					self.summaryText.textStorage?.append(out)
 					self.summaryController.showWindow(self)
 				}
 				self.checkUpdates()
