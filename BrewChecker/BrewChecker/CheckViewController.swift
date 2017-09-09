@@ -14,6 +14,7 @@ class CheckViewController: NSViewController, NSTableViewDelegate, NSTableViewDat
 	var manager: BrewManager!
 	var updated = false
 	var settingsController: NSWindowController!
+	var summaryController: NSWindowController!
 	var selectedFormulae: [String]! = []
 	var upgradeOutput: String?
 	
@@ -28,6 +29,10 @@ class CheckViewController: NSViewController, NSTableViewDelegate, NSTableViewDat
 	@IBOutlet weak var pathTextField: NSTextField!
 	@IBOutlet weak var statusIndicator: NSBox!
 	@IBOutlet weak var buttonSave: NSButton!
+	
+	// Summary
+	@IBOutlet var summary: NSWindow!
+	@IBOutlet weak var summaryText: NSTextField!
 	
 	@IBAction func close(_ sender: Any) {
 		NSApplication.shared().terminate(nil)
@@ -47,7 +52,6 @@ class CheckViewController: NSViewController, NSTableViewDelegate, NSTableViewDat
 			} else {
 				selectedFormulae.remove(at: sender.index)
 			}
-			print(selectedFormulae)
 		}
 	}
 	
@@ -81,7 +85,8 @@ class CheckViewController: NSViewController, NSTableViewDelegate, NSTableViewDat
 				DispatchQueue.main.async {
 					self.upgradeBar.isHidden = true
 					self.upgradeBar.stopAnimation(self)
-					print(output)
+					self.summaryText.stringValue = output
+					self.summaryController.showWindow(self)
 				}
 				self.checkUpdates()
 			}
@@ -94,6 +99,7 @@ class CheckViewController: NSViewController, NSTableViewDelegate, NSTableViewDat
 		self.formulaeView.dataSource = self
 		pathTextField.delegate = self
 		settings.close()
+		summary.close()
     }
 	
 	override func viewDidAppear() {
@@ -102,6 +108,7 @@ class CheckViewController: NSViewController, NSTableViewDelegate, NSTableViewDat
 	
     override func awakeFromNib() {
 		settingsController = NSWindowController(window: settings)
+		summaryController = NSWindowController(window: summary)
         manager = BrewManager()
 		if Settings.brewExists() {
 			if !updated {

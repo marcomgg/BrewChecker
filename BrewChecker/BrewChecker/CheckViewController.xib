@@ -10,6 +10,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="CheckViewController" customModule="BrewChecker" customModuleProvider="target">
             <connections>
+                <outlet property="Summary" destination="72x-r6-hZH" id="6xX-Uw-TQ0"/>
                 <outlet property="buttonCheck" destination="ohh-mg-WpW" id="oT0-hB-snK"/>
                 <outlet property="buttonSave" destination="VZq-HJ-QMv" id="rQh-xU-yxu"/>
                 <outlet property="formulaeView" destination="9nP-gK-9sB" id="frU-rX-xaS"/>
@@ -17,6 +18,8 @@
                 <outlet property="progressWheel" destination="Xah-io-qca" id="sCe-Ga-W9X"/>
                 <outlet property="settings" destination="fXl-KG-oqc" id="rkU-4j-Of0"/>
                 <outlet property="statusIndicator" destination="cYT-vj-BjD" id="BzD-2F-F8y"/>
+                <outlet property="summary" destination="72x-r6-hZH" id="9Tn-QQ-ft2"/>
+                <outlet property="summaryText" destination="6Ex-1Y-x0t" id="SHL-Qd-Bbb"/>
                 <outlet property="upgradeBar" destination="LOJ-zg-F3l" id="ZVz-NV-XCI"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -238,6 +241,28 @@
                 </subviews>
             </view>
             <point key="canvasLocation" x="541" y="74"/>
+        </window>
+        <window title="Summary" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="" animationBehavior="default" id="72x-r6-hZH">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="283" y="305" width="480" height="270"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <view key="contentView" id="N2e-Ck-eIe">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ex-1Y-x0t">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="BsM-vF-ZpZ">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="351" y="-224"/>
         </window>
     </objects>
     <resources>
