@@ -20,7 +20,7 @@
                 <outlet property="popover" destination="UU5-Bo-fzv" id="abh-Uv-FTl"/>
             </connections>
         </customObject>
-        <popover behavior="t" id="UU5-Bo-fzv">
+        <popover id="UU5-Bo-fzv">
             <connections>
                 <outlet property="contentViewController" destination="edn-S0-ESX" id="BLg-2i-xa8"/>
             </connections>

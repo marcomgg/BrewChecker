@@ -14,6 +14,8 @@ class PopoverController: NSObject {
 	
 	let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
 	
+	var popoverTransiencyMonitor: AnyObject?
+	
 	override func awakeFromNib() {
 		if let button = statusItem.button {
     		button.image = NSImage(named: "statusIcon")
@@ -21,23 +23,30 @@ class PopoverController: NSObject {
     		button.action = #selector(self.togglePopover)
   		}
     }
-	
+
 	func showPopover(sender: AnyObject?) {
-		if let button = statusItem.button {
-			popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+  		if let button = statusItem.button {
+    		popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+			if(popoverTransiencyMonitor == nil)
+    		{
+        		popoverTransiencyMonitor = NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseDown, .rightMouseDown], handler: {(event: NSEvent!) in self.closePopover(sender: sender)}) as AnyObject
+  			}
 		}
 	}
 
 	func closePopover(sender: AnyObject?) {
   		popover.performClose(sender)
+		if((popoverTransiencyMonitor) != nil){
+			NSEvent.removeMonitor(popoverTransiencyMonitor!)
+			popoverTransiencyMonitor = nil
+		}
 	}
 
 	func togglePopover(sender: AnyObject?) {
-		if popover.isShown {
+		if popover.isShown{
 			closePopover(sender: sender)
 		} else {
 			showPopover(sender: sender)
 		}
 	}
-
 }
