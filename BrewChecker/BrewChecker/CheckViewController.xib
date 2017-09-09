@@ -10,7 +10,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="CheckViewController" customModule="BrewChecker" customModuleProvider="target">
             <connections>
-                <outlet property="Summary" destination="72x-r6-hZH" id="6xX-Uw-TQ0"/>
                 <outlet property="buttonCheck" destination="ohh-mg-WpW" id="oT0-hB-snK"/>
                 <outlet property="buttonSave" destination="VZq-HJ-QMv" id="rQh-xU-yxu"/>
                 <outlet property="formulaeView" destination="9nP-gK-9sB" id="frU-rX-xaS"/>
@@ -18,8 +17,8 @@
                 <outlet property="progressWheel" destination="Xah-io-qca" id="sCe-Ga-W9X"/>
                 <outlet property="settings" destination="fXl-KG-oqc" id="rkU-4j-Of0"/>
                 <outlet property="statusIndicator" destination="cYT-vj-BjD" id="BzD-2F-F8y"/>
-                <outlet property="summary" destination="72x-r6-hZH" id="9Tn-QQ-ft2"/>
-                <outlet property="summaryText" destination="FF2-bi-WrZ" id="0jd-sU-kwn"/>
+                <outlet property="summary" destination="mfW-nC-emf" id="H67-ZY-XdR"/>
+                <outlet property="summaryText" destination="RY2-dg-UL5" id="OwW-O2-cEM"/>
                 <outlet property="upgradeBar" destination="LOJ-zg-F3l" id="ZVz-NV-XCI"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -242,45 +241,45 @@
             </view>
             <point key="canvasLocation" x="541" y="74"/>
         </window>
-        <window title="Summary" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="" animationBehavior="default" id="72x-r6-hZH">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <rect key="contentRect" x="283" y="305" width="480" height="270"/>
+        <window title="Summary" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="" animationBehavior="default" id="mfW-nC-emf" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
+            <rect key="contentRect" x="272" y="172" width="500" height="300"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
-            <view key="contentView" id="N2e-Ck-eIe">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+            <view key="contentView" id="Xdj-eV-Zh9">
+                <rect key="frame" x="0.0" y="0.0" width="500" height="300"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GXE-3x-lWL">
-                        <rect key="frame" x="-1" y="-1" width="482" height="272"/>
+                    <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Cw-lz-fOo">
+                        <rect key="frame" x="-1" y="-1" width="502" height="302"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <clipView key="contentView" ambiguous="YES" id="vb9-RD-XUL">
-                            <rect key="frame" x="1" y="1" width="480" height="270"/>
+                        <clipView key="contentView" ambiguous="YES" id="4Aq-EL-lML">
+                            <rect key="frame" x="1" y="1" width="500" height="300"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textView ambiguous="YES" editable="NO" importsGraphics="NO" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="FF2-bi-WrZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                                <textView ambiguous="YES" importsGraphics="NO" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="RY2-dg-UL5">
+                                    <rect key="frame" x="0.0" y="0.0" width="500" height="300"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="backgroundColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="480" height="270"/>
-                                    <size key="maxSize" width="491" height="10000000"/>
-                                    <color key="insertionPointColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                                    <size key="minSize" width="500" height="300"/>
+                                    <size key="maxSize" width="507" height="10000000"/>
+                                    <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 </textView>
                             </subviews>
-                            <color key="backgroundColor" name="controlLightHighlightColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="ONz-BB-JXL">
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="DkA-qu-FQY">
                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="qy7-qv-bBB">
-                            <rect key="frame" x="465" y="1" width="16" height="270"/>
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="aiv-dg-QtC">
+                            <rect key="frame" x="485" y="1" width="16" height="300"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="351" y="-224"/>
+            <point key="canvasLocation" x="629" y="-288"/>
         </window>
     </objects>
     <resources>
