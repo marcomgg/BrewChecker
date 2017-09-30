@@ -48,7 +48,7 @@ class CheckViewController: NSViewController, NSTableViewDelegate, NSTableViewDat
 	@IBAction func selectFormula(_ sender: SelectFormulaButton) {
 		if let formula = outdatedFormulae![sender.index] as? [String: Any]{
 			let name = formula["name"] as! String
-			if sender.state != 0 {
+			if sender.state != NSControl.StateValue.on{
 				selectedFormulae.append(name)
 			} else {
 				selectedFormulae.remove(at: sender.index)
