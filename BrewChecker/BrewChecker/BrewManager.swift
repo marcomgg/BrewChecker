@@ -49,7 +49,7 @@ class BrewManager{
 		
 		if output.characters.count > 0 {
 			let lastIndex = output.index(before: output.endIndex)
-			return output[output.startIndex ..< lastIndex]
+			return String(output[output.startIndex ..< lastIndex])
 		}
 		return output
 	}

@@ -36,7 +36,7 @@ class CheckViewController: NSViewController, NSTableViewDelegate, NSTableViewDat
 	
 	
 	@IBAction func close(_ sender: Any) {
-		NSApplication.shared().terminate(nil)
+		NSApplication.shared.terminate(nil)
 	}
 	
 	@IBAction func settings(_ sender: NSButton) {
@@ -86,7 +86,7 @@ class CheckViewController: NSViewController, NSTableViewDelegate, NSTableViewDat
 				DispatchQueue.main.async {
 					self.upgradeBar.isHidden = true
 					self.upgradeBar.stopAnimation(self)
-					let attributes = [NSForegroundColorAttributeName: NSColor.white]
+					let attributes = [NSAttributedStringKey.foregroundColor: NSColor.white]
 					let out = NSMutableAttributedString(string: output, attributes: attributes)
 					self.summaryText.textStorage?.append(out)
 					self.summaryController.showWindow(self)
@@ -181,13 +181,13 @@ class CheckViewController: NSViewController, NSTableViewDelegate, NSTableViewDat
 	}
 	
 	func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-		if let cell = formulaeView.make(withIdentifier: "formulaeCell", owner: nil) as? OutdatedCellView {
+		if let cell = formulaeView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "formulaeCell"), owner: nil) as? OutdatedCellView {
 			if let formula = outdatedFormulae![row] as? [String: Any]{
                 let name = formula["name"] as! String
                 let version = formula["current_version"] as! String
 				self.selectedFormulae.append(name)
                 cell.formulaeName.stringValue = name + " " + version
-				cell.selected.state = 1
+				cell.selected.state = NSControl.StateValue(rawValue: 1)
 				cell.selected.action = #selector(self.selectFormula(_:))
 				cell.selected.index = row
                 return cell
